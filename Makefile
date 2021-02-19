@@ -1,4 +1,4 @@
-# .PHONY: install brain-games build publish
+.PHONY: install brain-games build publish lint
 install:
 	poetry install
 brain-games:
