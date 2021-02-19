@@ -4,6 +4,7 @@ import prompt
 
 
 def welcome_user():
-    """Ask user for his name in CLI and welcome him."""
+    """Do initial dialog, asking user for his name and welcoming him in CLI."""
+    print('Welcome to the Brain Games!')
     user_name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(user_name))
