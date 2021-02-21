@@ -45,7 +45,7 @@ class BrainEvenQABuilder(GameQABuilder):
     @classmethod
     def from_random(cls):
         """Create builder for random number in cls.number_interval."""
-        return cls(random.randint(*cls.NUMBER_INTERVAL))  # noqa: S311
+        return cls(random.randint(*cls.number_interval))  # noqa: S311
 
     def get_result(self) -> QA:
         """Return builded QA."""

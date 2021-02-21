@@ -13,7 +13,7 @@ def welcome_user() -> str:
         Username returned by user
     """
     print('Welcome to the Brain Games!')
-    user_name = prompt.string('May I have your name?')
+    user_name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(user_name))
     return user_name
 
@@ -58,8 +58,8 @@ def do_quiz(
         until_correct_answers: asking questions such times in row or until
           user fails
     """
-    if qa_builder.HELP_TEXT:
-        print(qa_builder.HELP_TEXT)
+    if qa_builder.help_text:
+        print(qa_builder.help_text)
     for _ in range(until_correct_answers):
         qa = qa_builder.from_random().get_result()
         answer_correct = ask_question(qa)

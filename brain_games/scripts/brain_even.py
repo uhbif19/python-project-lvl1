@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Main script, starting the games."""
+"""Script for Brain Even Game."""
 
 from brain_games import cli, games_logic
 
