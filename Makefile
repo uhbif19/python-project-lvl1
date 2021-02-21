@@ -5,6 +5,8 @@ brain-games:
 	poetry run brain-games
 brain-even:
 	poetry run brain-even
+brain-calculator:
+	poetry run brain-calculator
 test:
 	pytest
 build:

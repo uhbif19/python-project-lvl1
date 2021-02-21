@@ -1,17 +1,28 @@
 import pytest
 
-from brain_games.games_logic import BrainEvenQABuilder
+from brain_games.games_logic import (BinaryOp, BrainEvenQABuilder,
+                                     CalculatorQABuilder)
 
 
 @pytest.mark.parametrize(
-    'number, answer',
-    [(5, 'no'), (6, 'yes')]
+    'builder_class, args, question, answer',
+    [
+        (BrainEvenQABuilder, [5], '5', 'no'),
+        (BrainEvenQABuilder, [6], '6', 'yes'),
+        (CalculatorQABuilder, [1,2, BinaryOp.ADD], '1 + 2', '3'),
+        (CalculatorQABuilder, [1,2, BinaryOp.SUB], '1 - 2', '-1'),
+        (CalculatorQABuilder, [1,2, BinaryOp.MUL], '1 * 2', '2'),
+    ]
 )
-def test_brain_even_qa_builder_generates_correctly(number, answer):
-    builder = BrainEvenQABuilder(number)
+def test_qa_builder_generates_correctly(builder_class, args, question, answer):
+    builder = builder_class(*args)
     qa = builder.get_result()
-    assert qa.question == str(number)
+    assert qa.question == question
     assert qa.correct_answer == answer
 
-def test_qa_builder_from_random_not_failing():
-    BrainEvenQABuilder.from_random().get_result()
+@pytest.mark.parametrize(
+    'builder_class',
+    [BrainEvenQABuilder, CalculatorQABuilder]
+)
+def test_qa_builder_from_random_not_failing(builder_class):
+    builder_class.from_random().get_result()
