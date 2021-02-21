@@ -26,7 +26,7 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
   lint:
-    name: Lint code base
+    name: Lint and test code base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -42,3 +42,6 @@ jobs:
       - name: Run Linter
         run: |
           make lint
+      - name: Run tests
+        run: |
+          make test
