@@ -1,6 +1,6 @@
 import pytest
+from brain_games.qa_builders.binary import BinaryOp
 from brain_games.qa_builders import (
-    BinaryOp,
     BrainEvenQABuilder,
     CalculatorQABuilder,
     GCDQABuilder,

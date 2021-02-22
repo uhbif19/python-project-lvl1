@@ -14,7 +14,7 @@ brain-progression:
 brain-prime:
 	poetry run brain-prime
 test:
-	pytest
+	poetry run pytest
 build:
 	poetry build
 publish:
