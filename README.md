@@ -1,3 +1,14 @@
+## Notes to reviewer
+
+I do cross archeticture requrement on not using classes and separating games.
+The reason is that I do not know how to make code testable and in the same time
+do not duplicate logic without using something like mine QABuilders.
+
+Maybe I missing something.
+
+If you think, that this reasoning is not correct and mine arch is bad, than
+I will rewrite it.
+
 ## Statuses
 
 Hexlet tests and linter status: [![Actions Status](https://github.com/uhbif19/python-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/uhbif19/python-project-lvl1/actions)
