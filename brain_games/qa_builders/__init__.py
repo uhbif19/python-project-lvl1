@@ -1,7 +1,4 @@
-from brain_games.qa_builders.binary import (
-    GCDQABuilder,
-    CalculatorQABuilder,
-)
+from brain_games.qa_builders.binary import CalculatorQABuilder, GCDQABuilder
 from brain_games.qa_builders.number_predicate import (
     BrainEvenQABuilder,
     PrimeQABuilder,
