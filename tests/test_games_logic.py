@@ -4,6 +4,7 @@ from brain_games.games_logic import (
     BrainEvenQABuilder,
     CalculatorQABuilder,
     GCDQABuilder,
+    ProgressionQABuilder,
 )
 
 
@@ -17,6 +18,7 @@ from brain_games.games_logic import (
         (CalculatorQABuilder, [1, 2, BinaryOp.MUL], '1 * 2', '2'),
         (GCDQABuilder, [3, 9], '3 9', '3'),
         (GCDQABuilder, [100, 52], '100 52', '4'),
+        (ProgressionQABuilder, [5, 2, 5], '5 7 9 11 13 .. 17 19 21 23', '15'),
     ]
 )
 def test_qa_builder_generates_correctly(builder_class, args, question, answer):
@@ -27,7 +29,10 @@ def test_qa_builder_generates_correctly(builder_class, args, question, answer):
 
 @pytest.mark.parametrize(
     'builder_class',
-    [BrainEvenQABuilder, CalculatorQABuilder, GCDQABuilder]
+    [
+        BrainEvenQABuilder, CalculatorQABuilder, GCDQABuilder,
+        ProgressionQABuilder
+    ]
 )
 def test_qa_builder_from_random_not_failing(builder_class):
     builder_class.from_random().get_result()

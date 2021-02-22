@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Callable, Optional
 
+from icontract import ensure, invariant
+
 
 @dataclass
 class QA:
@@ -48,7 +50,7 @@ class BrainEvenQABuilder(GameQABuilder):
     @classmethod
     def from_random(cls):
         """Create builder for random number in cls.number_interval."""
-        return cls(random.randint(*cls.number_interval))  # noqa: S311
+        return cls(random.randint(*cls.number_interval))
 
     def get_result(self) -> QA:
         """Return builded QA."""
@@ -89,9 +91,9 @@ class CalculatorQABuilder(GameQABuilder):
     def from_random(cls):
         """Create builder for random operands and operations."""
         return cls(
-            operand1=random.randint(*cls.number_interval),  # noqa: S311
-            operand2=random.randint(*cls.number_interval),  # noqa: S311
-            operation=random.choice(list(BinaryOp)),  # noqa: S311
+            operand1=random.randint(*cls.number_interval),
+            operand2=random.randint(*cls.number_interval),
+            operation=random.choice(list(BinaryOp)),
         )
 
     def get_result(self):
@@ -118,8 +120,8 @@ class GCDQABuilder(GameQABuilder):
     def from_random(cls):
         """Create builder for random operands."""
         return cls(
-            operand1=random.randint(*cls.number_interval),  # noqa: S311
-            operand2=random.randint(*cls.number_interval),  # noqa: S311
+            operand1=random.randint(*cls.number_interval),
+            operand2=random.randint(*cls.number_interval),
         )
 
     def get_result(self):
@@ -129,3 +131,50 @@ class GCDQABuilder(GameQABuilder):
         )
         answer = str(math.gcd(self.operand1, self.operand2))
         return QA(question, answer)
+
+
+@invariant(lambda self: 0 <= self.masked_index < self.sample_length)
+@dataclass
+class ProgressionQABuilder(GameQABuilder):
+    """
+    Building QA suitable for Progression game.
+
+    Each question is sample of first numbers of ariphmetic progression
+    with some number masked. The correct answer is masked number.
+    """
+
+    start: int  # Progression is defined by two params
+    step: int
+    masked_index: int  # Index of sample array to be masked in question
+
+    start_interval = (1, 50)
+    step_interval = (1, 10)
+    sample_length = 10
+    help_text = 'What number is missing in the progression?'
+
+    @classmethod
+    def from_random(cls):
+        """Create builder for random operands."""
+        return cls(
+            start=random.randint(*cls.start_interval),
+            step=random.randint(*cls.step_interval),
+            masked_index=random.randint(0, cls.sample_length - 1),
+        )
+
+    def get_result(self):
+        """Return builded QA."""
+        sample = self._first_numbers_sample()
+        sample_masked = [
+            '..' if index == self.masked_index else str(sample[index])
+            for index in range(self.sample_length)
+        ]
+        question = ' '.join(sample_masked)
+        answer = str(sample[self.masked_index])
+        return QA(question, answer)
+
+    @ensure(lambda result, self: len(result) == self.sample_length)
+    def _first_numbers_sample(self):
+        return [
+            self.start + (self.step * index)
+            for index in range(self.sample_length)
+        ]
