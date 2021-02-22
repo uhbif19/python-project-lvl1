@@ -1,7 +1,8 @@
 """Helpers for working with CLI."""
 
 import prompt
-from brain_games.games_logic import QA, GameQABuilder
+from brain_games.qa import QA
+from brain_games.qa_builders.abstract import GameQABuilder
 
 
 def welcome_user() -> str:

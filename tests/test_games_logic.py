@@ -1,5 +1,5 @@
 import pytest
-from brain_games.games_logic import (
+from brain_games.qa_builders import (
     BinaryOp,
     BrainEvenQABuilder,
     CalculatorQABuilder,
