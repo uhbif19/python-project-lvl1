@@ -1,5 +1,4 @@
 import pytest
-from brain_games.qa_builders.binary import BinaryOp
 from brain_games.qa_builders import (
     BrainEvenQABuilder,
     CalculatorQABuilder,
@@ -7,6 +6,7 @@ from brain_games.qa_builders import (
     PrimeQABuilder,
     ProgressionQABuilder,
 )
+from brain_games.qa_builders.binary import BinaryOp
 
 
 @pytest.mark.parametrize(
@@ -22,7 +22,7 @@ from brain_games.qa_builders import (
         (GCDQABuilder, [3, 9], '3 9', '3'),
         (GCDQABuilder, [100, 52], '100 52', '4'),
         (ProgressionQABuilder, [5, 2, 5], '5 7 9 11 13 .. 17 19 21 23', '15'),
-    ]
+    ],
 )
 def test_qa_builder_generates_correctly(builder_class, args, question, answer):
     builder = builder_class(*args)
@@ -30,12 +30,16 @@ def test_qa_builder_generates_correctly(builder_class, args, question, answer):
     assert qa.question == question
     assert qa.correct_answer == answer
 
+
 @pytest.mark.parametrize(
     'builder_class',
     [
-        BrainEvenQABuilder, PrimeQABuilder, CalculatorQABuilder, GCDQABuilder,
-        ProgressionQABuilder
-    ]
+        BrainEvenQABuilder,
+        PrimeQABuilder,
+        CalculatorQABuilder,
+        GCDQABuilder,
+        ProgressionQABuilder,
+    ],
 )
 def test_qa_builder_from_random_not_failing(builder_class):
     builder_class.from_random().get_result()

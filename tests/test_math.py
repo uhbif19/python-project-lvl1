@@ -7,7 +7,7 @@ from brain_games.math import is_prime
     [
         (5, True),
         (57, False),
-    ]
+    ],
 )
 def test_is_prime(num, expected_result):
     assert is_prime(num) is expected_result
