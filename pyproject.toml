@@ -16,6 +16,7 @@ brain-gcd = "brain_games.scripts.brain_gcd:main"
 [tool.poetry.dependencies]
 python = "^3.9"
 prompt = "^0.4.1"
+icontract = "^2.4.1"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.15.1"
