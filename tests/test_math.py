@@ -5,6 +5,7 @@ from brain_games.math import is_prime
 @pytest.mark.parametrize(
     'num, expected_result',
     [
+        (1, False),
         (5, True),
         (57, False),
     ],
