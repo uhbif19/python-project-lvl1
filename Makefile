@@ -7,6 +7,8 @@ brain-even:
 	poetry run brain-even
 brain-calculator:
 	poetry run brain-calculator
+brain-gcd:
+	poetry run brain-gcd
 test:
 	pytest
 build:

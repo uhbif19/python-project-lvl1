@@ -1,5 +1,6 @@
 """Game logic, like generating quesions and answers, not touching IO."""
 
+import math
 import operator
 import random
 from abc import ABC, abstractmethod
@@ -100,4 +101,31 @@ class CalculatorQABuilder(GameQABuilder):
         )
         python_op = self.operation.to_python()
         answer = str(python_op(self.operand1, self.operand2))
+        return QA(question, answer)
+
+
+@dataclass
+class GCDQABuilder(GameQABuilder):
+    """Building QA suitable for GCD game."""
+
+    operand1: int
+    operand2: int
+
+    number_interval = (1, 100)
+    help_text = 'Find the greatest common divisor of given numbers.'
+
+    @classmethod
+    def from_random(cls):
+        """Create builder for random operands."""
+        return cls(
+            operand1=random.randint(*cls.number_interval),  # noqa: S311
+            operand2=random.randint(*cls.number_interval),  # noqa: S311
+        )
+
+    def get_result(self):
+        """Return builded QA."""
+        question = '{0} {1}'.format(
+            self.operand1, self.operand2,
+        )
+        answer = str(math.gcd(self.operand1, self.operand2))
         return QA(question, answer)

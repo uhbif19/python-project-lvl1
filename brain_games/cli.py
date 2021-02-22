@@ -1,7 +1,6 @@
 """Helpers for working with CLI."""
 
 import prompt
-
 from brain_games.games_logic import QA, GameQABuilder
 
 
@@ -47,7 +46,7 @@ def ask_question(qa: QA) -> bool:
 def do_quiz(
     qa_builder: GameQABuilder,
     user_name: str,
-    until_correct_answers: int,
+    until_correct_answers: int = 3,
 ):
     """
     Perform quiz with questions.
@@ -67,3 +66,17 @@ def do_quiz(
             print("Let's try again, {0}!".format(user_name))
             return
     print('Congratulations, {0}!'.format(user_name))
+
+
+def do_quiz_as_cli_app(qa_builder: GameQABuilder):
+    """
+    Perform quiz with welcome dialog.
+
+    Args:
+        qa_builder: used to build applicable QA and show quiz help text
+    """
+    user_name = welcome_user()
+    do_quiz(
+        qa_builder=qa_builder,
+        user_name=user_name,
+    )
