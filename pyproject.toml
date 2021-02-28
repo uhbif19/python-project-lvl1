@@ -27,6 +27,7 @@ icontract = "^2.4.1"
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.15.1"
 pytest = "^6.2.2"
+hypothesis = "^6.3.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
