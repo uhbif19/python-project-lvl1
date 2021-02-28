@@ -20,7 +20,7 @@ def is_prime(num: int) -> bool:
     """
     if num == 1:
         return False
-    for possible_multiply in range(2, math.ceil(num / 2)):
+    for possible_multiply in range(2, math.ceil(num / 2) + 1):
         if num % possible_multiply == 0:
             return False
     return True
