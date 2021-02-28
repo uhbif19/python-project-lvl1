@@ -1,5 +1,5 @@
 import pytest
-from brain_games.math import is_prime
+from brain_games.games.prime import is_prime
 
 
 @pytest.mark.parametrize(
