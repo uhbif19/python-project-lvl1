@@ -1,5 +1,6 @@
 """Build QA suitable for Prime game."""
 
+import math
 import random
 
 from brain_games.qa import QA
@@ -19,7 +20,7 @@ def is_prime(num: int) -> bool:
     """
     if num == 1:
         return False
-    for possible_multiply in range(2, num):
+    for possible_multiply in range(2, math.ceil(num / 2)):
         if num % possible_multiply == 0:
             return False
     return True
