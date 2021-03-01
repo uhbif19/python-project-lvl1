@@ -16,7 +16,10 @@ def test_is_prime(num, expected_result):
     assert is_prime(num) is expected_result
 
 
-non_trivial_multiple = strategies.integers(min_value=2)
+non_trivial_multiple = strategies.integers(
+    # XXX: for too big numbers prime checking will be slow
+    min_value=2, max_value=10**6,
+)
 
 
 @given(non_trivial_multiple, non_trivial_multiple)
