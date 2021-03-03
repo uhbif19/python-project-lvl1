@@ -6,7 +6,7 @@ import random
 from brain_games.qa import QA
 
 NUMBER_INTERVAL = (1, 100)
-HELP_TEXT = 'Find the greatest common divisor of given numbers.'
+HOW_TO_ANSWER_INSTRUCTION = 'Find the greatest common divisor of given numbers.'
 
 
 def gen_gcd_qa(operand1: int, operand2: int):

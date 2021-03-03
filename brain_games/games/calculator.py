@@ -8,7 +8,7 @@ from icontract import require
 
 NUMBER_INTERVAL = (1, 20)
 
-HELP_TEXT = 'Answer the result of presented binary operation.'
+HOW_TO_ANSWER_INSTRUCTION = 'Answer the result of presented binary operation.'
 
 
 # Binary operation from elementary ariphmetics used in Calculator game

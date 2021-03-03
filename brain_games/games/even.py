@@ -5,7 +5,9 @@ import random
 from brain_games.qa import QA
 
 NUMBER_INTERVAL = (1, 100)
-HELP_TEXT = 'Answer "yes" if the number is even, otherwise answer "no".'
+HOW_TO_ANSWER_INSTRUCTION = (
+    'Answer "yes" if the number is even, otherwise answer "no".'
+)
 
 
 def gen_even_qa(number: int) -> QA:

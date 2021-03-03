@@ -8,7 +8,7 @@ from icontract import ensure, require
 START_INTERVAL = (1, 50)
 STEP_INTERVAL = (1, 10)
 SAMPLE_LENGTH = 10
-HELP_TEXT = 'What number is missing in the progression?'
+HOW_TO_ANSWER_INSTRUCTION = 'What number is missing in the progression?'
 
 
 @ensure(lambda result: len(result) == SAMPLE_LENGTH)

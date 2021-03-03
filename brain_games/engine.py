@@ -20,7 +20,7 @@ def do_quiz(
         until_correct_answers: asking questions such times in row or until
           user fails
     """
-    print(game_module.HELP_TEXT)
+    print(game_module.HOW_TO_ANSWER_INSTRUCTION)
     for _ in range(until_correct_answers):
         qa = game_module.gen_random_qa()
         answer_correct = cli.ask_question(qa)

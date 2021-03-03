@@ -7,7 +7,9 @@ from brain_games.qa import QA
 from icontract import require
 
 NUMBER_INTERVAL = (1, 100)
-HELP_TEXT = 'Answer "yes" if the number is prime, otherwise answer "no".'
+HOW_TO_ANSWER_INSTRUCTION = (
+    'Answer "yes" if the number is prime, otherwise answer "no".'
+)
 
 
 @require(lambda num: num > 0)
