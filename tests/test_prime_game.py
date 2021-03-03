@@ -1,19 +1,17 @@
-import pytest
 from brain_games.games.prime import is_prime
 from hypothesis import given, strategies
 
-
-@pytest.mark.parametrize(
-    'num, expected_result',
-    [
-        (1, False),
-        (4, False),
-        (5, True),
-        (57, False),
-    ],
+EXAMPLES = (
+    (1, False),
+    (4, False),
+    (5, True),
+    (57, False),
 )
-def test_is_prime(num, expected_result):
-    assert is_prime(num) is expected_result
+
+
+def test_is_prime():
+    for num, expected_result in EXAMPLES:
+        assert is_prime(num) is expected_result
 
 
 non_trivial_multiple = strategies.integers(
