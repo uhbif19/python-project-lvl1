@@ -7,7 +7,7 @@ from brain_games.games import prime
 
 def main():
     """Start Brain Prime game in CLI."""
-    engine.do_quiz_as_cli_app(prime.HELP_TEXT, prime.gen_random_prime_qa)
+    engine.do_quiz_as_cli_app(prime)
 
 
 if __name__ == '__main__':

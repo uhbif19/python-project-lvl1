@@ -7,7 +7,7 @@ from brain_games.games import gcd
 
 def main():
     """Start Brain GCD game in CLI."""
-    engine.do_quiz_as_cli_app(gcd.HELP_TEXT, gcd.gen_random_gcd_qa)
+    engine.do_quiz_as_cli_app(gcd)
 
 
 if __name__ == '__main__':

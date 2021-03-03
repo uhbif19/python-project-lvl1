@@ -29,11 +29,11 @@ def test_gen_qa(gen_function, args, question, answer):
 @pytest.mark.parametrize(
     'gen_function',
     [
-        calculator.gen_random_calculator_qa,
-        gcd.gen_random_gcd_qa,
-        even.gen_random_even_qa,
-        prime.gen_random_prime_qa,
-        progression.gen_random_progression_qa,
+        calculator.gen_random_qa,
+        gcd.gen_random_qa,
+        even.gen_random_qa,
+        prime.gen_random_qa,
+        progression.gen_random_qa,
     ],
 )
 def test_gen_random_qa_not_failing(gen_function):

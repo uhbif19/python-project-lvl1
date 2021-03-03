@@ -32,6 +32,6 @@ def gen_prime_qa(number: int) -> QA:
     return QA(str(number), answer)
 
 
-def gen_random_prime_qa():
+def gen_random_qa():
     """Create QA for Prime game."""
     return gen_prime_qa(random.randint(*NUMBER_INTERVAL))

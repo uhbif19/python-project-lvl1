@@ -7,7 +7,7 @@ from brain_games.games import even
 
 def main():
     """Start Brain Even game in CLI."""
-    engine.do_quiz_as_cli_app(even.HELP_TEXT, even.gen_random_even_qa)
+    engine.do_quiz_as_cli_app(even)
 
 
 if __name__ == '__main__':

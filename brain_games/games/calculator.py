@@ -36,7 +36,7 @@ def gen_calculator_qa(operand1: int, operand2: int, operation: str):
     return QA(question, answer)
 
 
-def gen_random_calculator_qa():
+def gen_random_qa():
     """Create builder for random operands and operations."""
     return gen_calculator_qa(
         operand1=random.randint(*NUMBER_INTERVAL),

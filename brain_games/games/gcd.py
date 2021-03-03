@@ -18,7 +18,7 @@ def gen_gcd_qa(operand1: int, operand2: int):
     return QA(question, answer)
 
 
-def gen_random_gcd_qa():
+def gen_random_qa():
     """Create random QA."""
     return gen_gcd_qa(
         operand1=random.randint(*NUMBER_INTERVAL),

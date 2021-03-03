@@ -1,13 +1,12 @@
 """Whole game cycle, independent of QA generated for specific game."""
 
-from typing import Callable
+from types import ModuleType
 
 from brain_games import cli
 
 
 def do_quiz(
-    help_text: str,
-    gen_random_qa: Callable,
+    game_module: ModuleType,
     user_name: str,
     until_correct_answers: int = 3,
 ):
@@ -15,15 +14,15 @@ def do_quiz(
     Perform quiz with questions.
 
     Args:
-        help_text: quiz help text saying how to answer QA
-        gen_random_qa: used to build applicable QA
+        game_module: module with game implementation, submodule of
+        `brain_games.games`. Used to generate QA and QA solving help text.
         user_name: used in messages to user
         until_correct_answers: asking questions such times in row or until
           user fails
     """
-    print(help_text)
+    print(game_module.HELP_TEXT)
     for _ in range(until_correct_answers):
-        qa = gen_random_qa()
+        qa = game_module.gen_random_qa()
         answer_correct = cli.ask_question(qa)
         if not answer_correct:
             print("Let's try again, {0}!".format(user_name))
@@ -31,17 +30,13 @@ def do_quiz(
     print('Congratulations, {0}!'.format(user_name))
 
 
-def do_quiz_as_cli_app(help_text: str, gen_random_qa: Callable):
+def do_quiz_as_cli_app(game_module: ModuleType):
     """
     Perform quiz with welcome dialog.
 
     Args:
-        help_text: quiz help text saying how to answer QA
-        gen_random_qa: used to build applicable QA
+        game_module: module with game implementation, submodule of
+        `brain_games.games`. Used to generate QA and QA solving help text.
     """
     user_name = cli.welcome_user()
-    do_quiz(
-        help_text=help_text,
-        gen_random_qa=gen_random_qa,
-        user_name=user_name,
-    )
+    do_quiz(game_module=game_module, user_name=user_name)

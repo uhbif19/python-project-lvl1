@@ -15,6 +15,6 @@ def gen_even_qa(number: int) -> QA:
     return QA(str(number), answer)
 
 
-def gen_random_even_qa():
+def gen_random_qa():
     """Create QA for Even game."""
     return gen_even_qa(random.randint(*NUMBER_INTERVAL))

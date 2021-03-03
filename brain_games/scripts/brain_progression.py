@@ -7,10 +7,7 @@ from brain_games.games import progression
 
 def main():
     """Start Brain Progression game in CLI."""
-    engine.do_quiz_as_cli_app(
-        progression.HELP_TEXT,
-        progression.gen_random_progression_qa,
-    )
+    engine.do_quiz_as_cli_app(progression)
 
 
 if __name__ == '__main__':

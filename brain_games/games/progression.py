@@ -42,7 +42,7 @@ def gen_progression_qa(start: int, step: int, masked_index: int):
     return QA(question, answer)
 
 
-def gen_random_progression_qa():
+def gen_random_qa():
     """Create builder for random operands."""
     return gen_progression_qa(
         start=random.randint(*START_INTERVAL),

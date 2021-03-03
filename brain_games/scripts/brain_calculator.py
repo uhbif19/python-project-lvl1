@@ -7,10 +7,7 @@ from brain_games.games import calculator
 
 def main():
     """Start Brain Calculator game in CLI."""
-    engine.do_quiz_as_cli_app(
-        calculator.HELP_TEXT,
-        calculator.gen_random_calculator_qa,
-    )
+    engine.do_quiz_as_cli_app(calculator)
 
 
 if __name__ == '__main__':
