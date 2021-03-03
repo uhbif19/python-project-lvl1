@@ -16,7 +16,7 @@ BINARY_OPERATIONS = ('+', '-', '*')
 
 
 @require(lambda operation: operation in BINARY_OPERATIONS)
-def operation_to_python(operation: str):
+def translate_binop_symbol_to_realizaton(operation: str):
     """Return python function performing this binary operation."""
     return {
         '+': operator.add,
@@ -31,7 +31,7 @@ def gen_calculator_qa(operand1: int, operand2: int, operation: str):
     question = '{0} {1} {2}'.format(
         operand1, operation, operand2,
     )
-    python_op = operation_to_python(operation)
+    python_op = translate_binop_symbol_to_realizaton(operation)
     answer = str(python_op(operand1, operand2))
     return QA(question, answer)
 
