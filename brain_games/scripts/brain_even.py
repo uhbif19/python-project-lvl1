@@ -7,7 +7,7 @@ from brain_games.games import even
 
 def main():
     """Start Brain Even game in CLI."""
-    cli.do_quiz_as_cli_app(even)
+    cli.perform_quiz_as_standalone_cli_app(even)
 
 
 if __name__ == '__main__':

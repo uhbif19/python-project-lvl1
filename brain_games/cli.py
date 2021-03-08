@@ -3,11 +3,10 @@
 from types import ModuleType
 
 import prompt
-from brain_games import cli
 from brain_games.qa import QA
 
 
-def welcome_user() -> str:
+def welcome_user_and_ask_his_name() -> str:
     """
     Do initial dialog, asking user for his name and welcoming him in CLI.
 
@@ -20,50 +19,48 @@ def welcome_user() -> str:
     return user_name
 
 
-def do_quiz(
-    game_module: ModuleType,
+def perform_quiz(
+    game: ModuleType,
     user_name: str,
-    until_correct_answers: int = 3,
+    rounds_to_win: int = 3,
 ):
     """
-    Perform quiz with questions.
+    Perform quiz asking user questions.
 
     Args:
-        game_module: module with game implementation, submodule of
+        game: module with game implementation, submodule of
         `brain_games.games`. Used to generate QA and QA solving help text.
         user_name: used in messages to user
-        until_correct_answers: asking questions such times in row or until
-          user fails
+        rounds_to_win: how many question will be asked (only if user
+            answers correctly) until he will be declared winner
     """
-    print(game_module.HOW_TO_ANSWER_INSTRUCTION)
-    for _ in range(until_correct_answers):
-        qa: QA = game_module.gen_random_qa()
+    print(game.HOW_TO_ANSWER_INSTRUCTION)
+    for _ in range(rounds_to_win):
+        qa: QA = game.gen_random_qa()
         print('Question: {0}'.format(qa.question))
-        user_answered = prompt.string('Your answer: ')
-        user_was_correct = user_answered == qa.correct_answer
-        correctnes_message = (
-            'Correct!'
-            if user_was_correct
-            else (
-                "'{0}' is wrong answer ;(. Correct answer was '{1}'.".format(
-                    user_answered, qa.correct_answer,
+        user_answer = prompt.string('Your answer: ')
+        if user_answer == qa.correct_answer:
+            print('Correct!')
+        else:
+            print(
+                "'{0}' is wrong answer ;(. Correct answer was '{1}'.\n"
+                "Let's try again, {0}!".format(
+                    user_answer, qa.correct_answer, user_name,
                 )
             )
-        )
-        print(correctnes_message)
-        if not user_was_correct:
-            print("Let's try again, {0}!".format(user_name))
             return
     print('Congratulations, {0}!'.format(user_name))
 
 
-def do_quiz_as_cli_app(game_module: ModuleType):
+def perform_quiz_as_standalone_cli_app(game: ModuleType):
     """
-    Perform quiz with welcome dialog.
+    Runs as CLI app performing quiz.
+
+    That means asking user its name and then performing quiz.
 
     Args:
-        game_module: module with game implementation, submodule of
+        game: module with game implementation, submodule of
         `brain_games.games`. Used to generate QA and QA solving help text.
     """
-    user_name = cli.welcome_user()
-    do_quiz(game_module=game_module, user_name=user_name)
+    user_name = welcome_user_and_ask_his_name()
+    perform_quiz(game=game, user_name=user_name)
