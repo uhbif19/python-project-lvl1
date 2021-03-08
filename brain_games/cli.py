@@ -43,10 +43,12 @@ def perform_quiz(
             print('Correct!')
         else:
             print(
-                "'{0}' is wrong answer ;(. Correct answer was '{1}'.\n"
-                "Let's try again, {0}!".format(
+                (
+                    "'{0}' is wrong answer ;(. Correct answer was '{1}'.\n"
+                    + "Let's try again, {2}!"
+                ).format(
                     user_answer, qa.correct_answer, user_name,
-                )
+                ),
             )
             return
     print('Congratulations, {0}!'.format(user_name))
@@ -54,7 +56,7 @@ def perform_quiz(
 
 def perform_quiz_as_standalone_cli_app(game: ModuleType):
     """
-    Runs as CLI app performing quiz.
+    Run CLI app performing quiz.
 
     That means asking user its name and then performing quiz.
 
