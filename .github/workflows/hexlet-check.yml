@@ -25,23 +25,3 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
-  lint:
-    name: Lint and test code base
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Setup env
-        run: |
-          pip install poetry
-          make install
-      - name: Run Linter
-        run: |
-          make lint
-      - name: Run tests
-        run: |
-          make test
